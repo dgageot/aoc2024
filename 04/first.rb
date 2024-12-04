@@ -1,23 +1,28 @@
 #!/usr/bin/env ruby
 # Expected: 18
 
-def diagonals(square)
-  diagonals = []
+require "../common.rb"
 
-  (3...square.size).each do |i|
-    diagonals << (0..i).map { |j| square[j][i - j] }
-    diagonals << (0..i).map { |j| square[j].reverse[i - j] }
+grid = Grid.new(STDIN.readlines(chomp: true))
+
+count = 0
+
+grid.height.times do |r|
+  grid.width.times do |c|
+    next if grid[r, c] != "X"
+
+    [-1, 0, 1].each do |dr|
+      [-1, 0, 1].each do |dc|
+        next if dr == 0 && dc == 0
+
+        next if grid[r + 1 * dr, c + 1 * dc] != "M"
+        next if grid[r + 2 * dr, c + 2 * dc] != "A"
+        next if grid[r + 3 * dr, c + 3 * dc] != "S"
+
+        count += 1
+      end
+    end
   end
-
-  (1...(square.size - 3)).each do |i|
-    diagonals << (i...square.size).map { |j| square[j][j - i] }
-    diagonals << (i...square.size).map { |j| square[j].reverse[j - i] }
-  end
-
-  diagonals
 end
 
-lines = STDIN.readlines(chomp: true).map(&:chars)
-
-p (lines + lines.transpose + diagonals(lines))
-  .sum { |line| line.each_cons(4).count { |sub| ["XMAS", "SAMX"].include?(sub.join) } }
+p count
