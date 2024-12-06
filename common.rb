@@ -4,6 +4,8 @@ require "stringio"
 require "interval_set"
 
 class Grid
+    include Enumerable
+
     def initialize(rows)
         @rows = rows
         @height = rows.length
