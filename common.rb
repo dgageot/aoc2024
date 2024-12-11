@@ -3,6 +3,8 @@ require "scanf"
 require "stringio"
 require "interval_set"
 
+@drdc = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+
 class Grid
     include Enumerable
 

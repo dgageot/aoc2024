@@ -12,7 +12,6 @@ def paths(r, c, l)
   [[0, -1], [0, 1], [-1, 0], [1, 0]].flat_map { |dr, dc| paths(r + dr, c + dc, l + 1) }
 end
 
-  
 sum = 0
 @grid.select { |_, _, v| v == 0 }.each do |r, c|
   seen = paths(r, c, 0)
