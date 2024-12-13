@@ -2,6 +2,7 @@ require "active_support/all"
 require "scanf"
 require "stringio"
 require "interval_set"
+require "matrix"
 
 @drdc = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 

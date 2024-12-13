@@ -11,6 +11,7 @@ GEM
       concurrent-ruby (~> 1.0)
     interval_set (0.2.3)
       treemap-fork (~> 1.0, >= 1.0.4.2)
+    matrix (0.4.2)
     minitest (5.16.3)
     pairing_heap (1.0.0)
     parallel (1.22.1)
@@ -33,6 +34,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport (= 7.0.4)
   interval_set (~> 0.2.3)
+  matrix (~> 0.4.2)
   parallel (~> 1.22)
   rgl (~> 0.5.9)
   scanf (~> 1.0)
