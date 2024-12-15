@@ -15,3 +15,14 @@ p movements
 robot = grid.find { |_, _, v| v == "@" }[0..1]
 p robot
 
+@directions = {
+    "^" => [-1,  0],
+    "v" => [+1,  0],
+    "<" => [ 0, -1]
+    ">" => [ 0, +1],
+}
+
+
+movements.each do |movement|
+    dr, dr = *@directions[movement]
+end
