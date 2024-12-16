@@ -16,7 +16,7 @@ pq << [grid.height-2, 1, 0, 1, 0]
 
 loop do
     score, r, c, dr, dc = pq.pop
-    # p "r #{r} c #{c} dr #{dr} dc #{dc}"
+    p "r #{r} c #{c} dr #{dr} dc #{dc}"
 
     if [r, c] == [1, grid.width - 2]
         p hl
