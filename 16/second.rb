@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# Expected: 7036
+# Expected: 11048
 
 require "../common.rb"
 require "rb_heap"
