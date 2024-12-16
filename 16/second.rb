@@ -7,7 +7,7 @@ require "rb_heap"
 grid = Grid.new(STDIN.readlines(chomp: true).map { |line| line.chars })
 
 pq = Heap.new { |l, r| l[0] < r[0] }
-pq << [0, grid.height - 2, 1, 0, 1, Set.new()]
+pq << [0, grid.height - 2, 1, 0, 1, Set.new([grid.height - 2, 1])]
 
 spots = Set.new
 lowest = Float::INFINITY
@@ -36,9 +36,13 @@ loop do
         next if grid[r + ddr, c + ddc] == "#"
 
         if dr == ddr && dc == ddc
-            pq << [score + 1, r + ddr, c + ddc, ddr, ddc, path + [[r, c]]]
+            if !path.include?([r + ddr, c + ddc])
+                pq << [score + 1, r + ddr, c + ddc, ddr, ddc, path + [[r + ddr, c + ddc]]]
+            end
         elsif (dr + ddr) != 0 || (dc + ddc) != 0
-            pq << [score + 1001, r + ddr, c + ddc, ddr, ddc, path + [[r, c]]]
+            if !path.include?([r + ddr, c + ddc])
+                pq << [score + 1001, r + ddr, c + ddc, ddr, ddc, path + [[r + ddr, c + ddc]]]
+            end
         end
     end
 end
