@@ -29,7 +29,6 @@ movements.each do |movement|
             break if grid[br + dr * count, bc + dc * count] != "O"
             count += 1
         end
-
         next if grid[br + dr * count, bc + dc * count] == "#"
 
         grid[br + dr * count, bc + dc * count] = "O"
