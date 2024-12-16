@@ -10,8 +10,6 @@ seen = Set.new
 pq = Heap.new { |l, r| l[0] < r[0] }
 pq << [0, grid.height - 2, 1, 0, 1]
 
-path = []
-
 loop do
     score, r, c, dr, dc = pq.pop
     next if seen.add?([r, c]).nil?
