@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
-# Expected: 2028
+# Expected: 11048
 
 require "../common.rb"
 require "rb_heap"
 
 grid = Grid.new(STDIN.readlines(chomp: true).map { |line| line.chars })
-puts grid
+# puts grid
 
 grid[grid.height-2, 1] = "."
 grid[1, grid.width-2] = "."
