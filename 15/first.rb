@@ -21,28 +21,24 @@ br, bc = *grid.find { |_, _, v| v == "@" }[0..1]
 
 movements.each do |movement|
     dr, dc = *@directions[movement]
-    if grid[br + dr, bc + dc] != "#"
-        if grid[br + dr, bc + dc] == "."
-            grid[br, bc] = "."
-            br += dr
-            bc += dc
-        else
-            count = 1
-            loop do
-                break if grid[br + dr * count, bc + dc * count] != "O"
-                count += 1
-            end
+    next if grid[br + dr, bc + dc] == "#"
 
-            next if grid[br + dr * count, bc + dc * count] == "#"
-
-            grid[br, bc] = "."
-            grid[br + dr * count, bc + dc * count] = "O"
-            br += dr
-            bc += dc
+    if grid[br + dr, bc + dc] == "O"
+        count = 1
+        loop do
+            break if grid[br + dr * count, bc + dc * count] != "O"
+            count += 1
         end
+
+        next if grid[br + dr * count, bc + dc * count] == "#"
+
+        grid[br + dr * count, bc + dc * count] = "O"
     end
 
-    # grid[br, bc] = "@"
+    grid[br, bc] = "."
+    br += dr
+    bc += dc
+    grid[br, bc] = "@"
 end
 
 sum = 0
@@ -51,3 +47,4 @@ grid.each do |r, c, v|
     sum += 100 * r + c
 end
 p sum
+# 1568399
