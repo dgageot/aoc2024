@@ -7,3 +7,5 @@ gem "rgl", "~> 0.5.9"
 gem "parallel", "~> 1.22"
 gem "interval_set", "~> 0.2.3"
 gem "matrix", "~> 0.4.2"
+
+gem "rb_heap", "~> 1.1"
