@@ -9,13 +9,18 @@ grid = Grid.new(STDIN.readlines(chomp: true).map { |line| line.chars })
 seen = Set.new
 pq = Heap.new { |l, r| l[0] < r[0] }
 pq << [0, grid.height - 2, 1, 0, 1, []]
+min_score = Float::INFINITY
 
 loop do
     score, r, c, dr, dc, path = pq.pop
     next if seen.add?([r, c]).nil?
 
     if [r, c] == [1, grid.width - 2]
-        p score
+        if score <= min_score
+            min_score = score
+            p score
+        else
+        end
         return
     end
 
