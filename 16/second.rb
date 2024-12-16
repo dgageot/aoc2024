@@ -6,7 +6,7 @@ require "rb_heap"
 
 grid = Grid.new(STDIN.readlines(chomp: true).map { |line| line.chars })
 
-seen = Set.new
+seen = {}
 pq = Heap.new { |l, r| l[0] < r[0] }
 pq << [0, grid.height - 2, 1, 0, 1, []]
 
@@ -18,7 +18,14 @@ loop do
         return
     end
 
-    next if seen.add?([r, c]).nil?
+    best = seen[[r, c]]
+    if best.nil?
+        seen[[r, c]] = score
+    else
+        next
+    end
+
+    # next if seen.add?([r, c]).nil?
 
     @drdc.each do |ddr, ddc|
         next if grid[r + ddr, c + ddc] == "#"
