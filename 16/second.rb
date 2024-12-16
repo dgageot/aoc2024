@@ -12,14 +12,17 @@ pq << [0, grid.height - 2, 1, 0, 1, []]
 
 loop do
     score, r, c, dr, dc, path = pq.pop
+    if score.nil?
+        break
+    end
 
     if [r, c] == [1, grid.width - 2]
         p score
-        return
+        # return
     end
 
     best = seen[[r, c]]
-    if best.nil?
+    if best.nil? || best == score
         seen[[r, c]] = score
     else
         next
