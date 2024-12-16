@@ -12,10 +12,11 @@ grid[1, grid.width-2] = "."
 
 seen = Set.new
 pq = Heap.new { |l, r| l[0] < r[0] }
-pq << [0, 0, 0, 0, 0, 0]
+pq << [grid.height-2, 1, 0, 1, 0]
 
 loop do
     score, r, c, dr, dc = pq.pop
+    # p "r #{r} c #{c} dr #{dr} dc #{dc}"
 
     if [r, c] == [1, grid.width - 2]
         p hl
@@ -28,11 +29,11 @@ loop do
         next if grid[r + ddr, c + ddc] == "#"
 
         if dr == ddr && dc == ddc
-            pq << [score + 1, r + dr, c + dc, dr, dc]
+            pq << [score + 1, r + ddr, c + ddc, ddr, ddc]
         elsif dr + ddr + dc + ddc == 0
-            pq << [score + 2001, r + dr, c + dc, dr, dc]
+            pq << [score + 2001, r + ddr, c + ddc, ddr, ddc]
         elsif
-            pq << [score + 1001, r + dr, c + dc, dr, dc]
+            pq << [score + 1001, r + ddr, c + ddc, ddr, ddc]
         end
     end
 end
